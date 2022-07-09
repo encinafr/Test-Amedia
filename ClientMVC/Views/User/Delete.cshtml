@@ -1,0 +1,46 @@
+﻿@model ClientMVC.Models.UserModel
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Deleting User</h2>
+
+<h3>Estás seguro que desea eliminar este usuario?</h3>
+<div class="container p-3 my-3 border">
+    <hr />
+        <dl class="row">
+                <dt class="col-sm-3">
+                 @Html.DisplayNameFor(model => model.Cod_usuario)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Txt_user)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Txt_nombre)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Txt_apellido)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Txt_password)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Nro_doc)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Cod_rol)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.sn_activo)
+                </dd>
+        </dl>
+
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="Cod_usuario" />
+                <input class="btn btn-primary" type="submit" value="Yes" />
+                <a class="btn btn-danger" asp-action="Index">No</a>
+            </form>
+
+ </div>

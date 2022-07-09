@@ -1,0 +1,37 @@
+﻿@model Chat
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<form class="chat-input" onsubmit="sendMessage(event)" asp-controller="Home" asp-action="CreateMessage">
+    @*<input type="hidden" name="roomId" value="@Model?.Id">*@
+    <input type="text" name="message" id="message-input">
+    <button type="submit">Send</button>
+</form>
+
+@section scripts {
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+   
+    var sendMessage = function (event) {
+        event.preventDefault();
+        var data = new FormData(event.target);
+        document.getElementById('message-input').value = '';
+        axios.post('/Home/SendMessage', data)
+            .then(res => {
+                console.log("Message Sent!")
+            })
+            .catch(err => {
+                console.log("Failed to send message!")
+            })
+    }
+</script>
+
+}
+
