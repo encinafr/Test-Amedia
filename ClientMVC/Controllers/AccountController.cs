@@ -56,7 +56,8 @@ namespace ClientMVC.Controllers
                 var principal = new ClaimsPrincipal(identity);
 
                 var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-                return RedirectToAction("Success");
+                return RedirectToAction(actionName: "Index", controllerName: "User");
+
             }
 
             if (user.Cod_rol == (int)RolEnum.Usuario)
@@ -70,7 +71,8 @@ namespace ClientMVC.Controllers
                 var principal = new ClaimsPrincipal(identity);
 
                 var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-                return RedirectToAction(actionName: "Index", controllerName: "User");
+                return RedirectToAction("Success");
+
             }
 
 
@@ -85,6 +87,12 @@ namespace ClientMVC.Controllers
             HttpContext.Session.Remove("username");
             HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Index");
+        }
+
+
+        public IActionResult Success()
+        {
+            return View();
         }
     }
 }
