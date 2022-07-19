@@ -53,7 +53,7 @@ GO
 --Crear una tabla de alquiler de películas y otra de ventas, que te permita registrar
 --qué usuario compró/alquiló dicha película, a que precio y en qué momento
 CREATE TABLE tAlquilerPelicula (cod_alquiler INT PRIMARY KEY IDENTITY, cod_usuario INT, cod_pelicula INT,
-  precio NUMERIC(18,2), fecha_alquiler Date, fecha_devolucion Date,
+  precio NUMERIC(18,2), fecha_alquiler Date, fecha_devolucion Date, fecha_estipulada_devolucion date,
 CONSTRAINT fk_alquiler_pelicula FOREIGN KEY(cod_pelicula) REFERENCES tpelicula(cod_pelicula), 
 CONSTRAINT fk_alquiler_usuario FOREIGN KEY(cod_usuario) REFERENCES tUsers(cod_usuario))
 GO
